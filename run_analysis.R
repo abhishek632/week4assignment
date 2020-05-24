@@ -1,17 +1,17 @@
 library(dplyr)
 
 # read train data
-X_train &lt;- read.table(&quot;./UCI HAR Dataset/train/X_train.txt&quot;)
-Y_train &lt;- read.table(&quot;./UCI HAR Dataset/train/Y_train.txt&quot;)
-Sub_train &lt;- read.table(&quot;./UCI HAR Dataset/train/subject_train.txt&quot;)
+X_train <- read.table("./UCI HAR Dataset/train/X_train.txt")
+Y_train <- read.table("./UCI HAR Dataset/train/Y_train.txt")
+Sub_train <- read.table("./UCI HAR Dataset/train/subject_train.txt")
 
 # read test data
-X_test &lt;- read.table("/UCI HAR Dataset/test/X_test.txt")
-Y_test &lt;- read.table("./UCI HAR Dataset/test/Y_test.txt")
-Sub_test &lt;- read.table("./UCI HAR Dataset/test/subject_test.txt&quot")
+X_test <- read.table("/UCI HAR Dataset/test/X_test.txt")
+Y_test <- read.table("./UCI HAR Dataset/test/Y_test.txt")
+Sub_test <- read.table("./UCI HAR Dataset/test/subject_test.txt")
 
 # read data description
-variable_names &lt;- read.table("./UCI HAR Dataset/features.txt")
+variable_names <- read.table("./UCI HAR Dataset/features.txt")
 
 # read activity labels
 activity_labels <- read.table("./UCI HAR Dataset/activity_labels.txt")
@@ -38,5 +38,5 @@ colnames(X_total) <- variable_names[selected_var[,1],2]
 # of each variable for each activity and each subject.
 colnames(Sub_total) <- "subject";
 total <- cbind(X_total, activitylabel, Sub_total)
-total_mean <- total %&gt;% group_by(activitylabel, subject) %&gt;% summarize_each(funs(mean))
+total_mean <- total % % group_by(activitylabel, subject) % % summarize_each(funs(mean))
 write.table(total_mean, file = "./UCI HAR Dataset/tidydata.txt", row.names = FALSE, col.names = TRUE)
